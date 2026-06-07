@@ -188,7 +188,7 @@ export default function QuizANBK() {
   // Google script sync tracking
   const [syncStatus, setSyncStatus] = useState<'idle' | 'syncing' | 'success' | 'failed'>('idle');
   const [syncMessage, setSyncMessage] = useState<string>('');
-  const [scriptUrl, setScriptUrl] = useState<string>(() => localStorage.getItem('guru_apps_script_url') || 'https://script.google.com/macros/s/AKfycbzCFQk_8XeUDOrecw4v1Cguq4f97gxTkuCr3dWr0YiTMPTluV_gAGcY-7r-6CAe5qTo/exec'); // Teachers paste App Script macro webapp URL here
+  const [scriptUrl, setScriptUrl] = useState<string>(() => localStorage.getItem('guru_apps_script_url') || 'https://script.google.com/macros/s/AKfycbyd1ud6i0YXP8padu9_7BindQBo6iD_Sm6twZ71LTFqLb-hbdyI-zvHkERj2M_OsXg2/exec'); // Teachers paste App Script macro webapp URL here
 
   // Background timer ticking
   useEffect(() => {
@@ -404,7 +404,7 @@ export default function QuizANBK() {
       spreadsheetUrlId: "1mWJb0uh7btOGC07uITbEQh341wfG5euKXSQo4AC1e94"
     };
 
-    const currentScriptUrl = localStorage.getItem('guru_apps_script_url') || scriptUrl || 'https://script.google.com/macros/s/AKfycbzCFQk_8XeUDOrecw4v1Cguq4f97gxTkuCr3dWr0YiTMPTluV_gAGcY-7r-6CAe5qTo/exec';
+    const currentScriptUrl = localStorage.getItem('guru_apps_script_url') || scriptUrl || 'https://script.google.com/macros/s/AKfycbyd1ud6i0YXP8padu9_7BindQBo6iD_Sm6twZ71LTFqLb-hbdyI-zvHkERj2M_OsXg2/exec';
 
     // If teacher hasn't provided a Apps Script production Web App url yet, we simulate
     if (!currentScriptUrl) {

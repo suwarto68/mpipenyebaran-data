@@ -34,7 +34,7 @@ export default function Penutup() {
 
   // Load configuration on mount
   useEffect(() => {
-    const savedUrl = localStorage.getItem('guru_apps_script_url') || 'https://script.google.com/macros/s/AKfycbzCFQk_8XeUDOrecw4v1Cguq4f97gxTkuCr3dWr0YiTMPTluV_gAGcY-7r-6CAe5qTo/exec';
+    const savedUrl = localStorage.getItem('guru_apps_script_url') || 'https://script.google.com/macros/s/AKfycbyd1ud6i0YXP8padu9_7BindQBo6iD_Sm6twZ71LTFqLb-hbdyI-zvHkERj2M_OsXg2/exec';
     setScriptUrl(savedUrl);
   }, []);
 
@@ -54,7 +54,7 @@ export default function Penutup() {
 
     setIsSent(true);
 
-    const currentScriptUrl = localStorage.getItem('guru_apps_script_url') || scriptUrl || 'https://script.google.com/macros/s/AKfycbzCFQk_8XeUDOrecw4v1Cguq4f97gxTkuCr3dWr0YiTMPTluV_gAGcY-7r-6CAe5qTo/exec';
+    const currentScriptUrl = localStorage.getItem('guru_apps_script_url') || scriptUrl || 'https://script.google.com/macros/s/AKfycbyd1ud6i0YXP8padu9_7BindQBo6iD_Sm6twZ71LTFqLb-hbdyI-zvHkERj2M_OsXg2/exec';
 
     if (currentScriptUrl) {
       setSyncStatus('syncing');
