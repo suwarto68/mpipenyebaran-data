@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { FileText, Download, CheckCircle, Award, Sparkles, BookOpen, Clock, Users, RefreshCw, FileSpreadsheet } from 'lucide-react';
+import { getActualScriptUrl } from './QuizANBK';
 
 interface LKPDAnswer {
   soal1: string;
@@ -29,7 +30,7 @@ export default function Tugaslkpd() {
 
   // Load App Script URL and identities on mount
   useEffect(() => {
-    const savedUrl = localStorage.getItem('guru_apps_script_url') || 'https://script.google.com/macros/s/AKfycbyd1ud6i0YXP8padu9_7BindQBo6iD_Sm6twZ71LTFqLb-hbdyI-zvHkERj2M_OsXg2/exec';
+    const savedUrl = getActualScriptUrl();
     setScriptUrl(savedUrl);
   }, []);
 
@@ -46,7 +47,7 @@ export default function Tugaslkpd() {
 
     setIsSubmitted(true);
 
-    const currentScriptUrl = localStorage.getItem('guru_apps_script_url') || scriptUrl || 'https://script.google.com/macros/s/AKfycbyd1ud6i0YXP8padu9_7BindQBo6iD_Sm6twZ71LTFqLb-hbdyI-zvHkERj2M_OsXg2/exec';
+    const currentScriptUrl = getActualScriptUrl();
 
     // Sync to Google Sheets if App Script Web App URL is connected
     if (currentScriptUrl) {

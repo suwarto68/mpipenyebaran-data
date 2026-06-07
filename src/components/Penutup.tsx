@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { BookOpen, CheckCircle, FileText, Send, Sparkles, Smile, Star, Link as LinkIcon, FileSpreadsheet, Users } from 'lucide-react';
+import { getActualScriptUrl } from './QuizANBK';
 
 export default function Penutup() {
   const [reflectionText, setReflectionText] = useState<string>('');
@@ -34,7 +35,7 @@ export default function Penutup() {
 
   // Load configuration on mount
   useEffect(() => {
-    const savedUrl = localStorage.getItem('guru_apps_script_url') || 'https://script.google.com/macros/s/AKfycbyd1ud6i0YXP8padu9_7BindQBo6iD_Sm6twZ71LTFqLb-hbdyI-zvHkERj2M_OsXg2/exec';
+    const savedUrl = getActualScriptUrl();
     setScriptUrl(savedUrl);
   }, []);
 
@@ -54,7 +55,7 @@ export default function Penutup() {
 
     setIsSent(true);
 
-    const currentScriptUrl = localStorage.getItem('guru_apps_script_url') || scriptUrl || 'https://script.google.com/macros/s/AKfycbyd1ud6i0YXP8padu9_7BindQBo6iD_Sm6twZ71LTFqLb-hbdyI-zvHkERj2M_OsXg2/exec';
+    const currentScriptUrl = getActualScriptUrl();
 
     if (currentScriptUrl) {
       setSyncStatus('syncing');

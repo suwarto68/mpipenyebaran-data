@@ -154,6 +154,21 @@ const renderFormattedStimulus = (text: string) => {
   return <div className="space-y-1">{elements}</div>;
 };
 
+const DEFAULT_URL = 'https://script.google.com/macros/s/AKfycbyd1ud6i0YXP8padu9_7BindQBo6iD_Sm6twZ71LTFqLb-hbdyI-zvHkERj2M_OsXg2/exec';
+const STALE_URLS = [
+  'https://script.google.com/macros/s/AKfycbzCFQk_8XeUDOrecw4v1Cguq4f97gxTkuCr3dWr0YiTMPTluV_gAGcY-7r-6CAe5qTo/exec'
+];
+
+export const getActualScriptUrl = (): string => {
+  const stored = localStorage.getItem('guru_apps_script_url');
+  if (!stored) return DEFAULT_URL;
+  if (STALE_URLS.includes(stored.trim())) {
+    localStorage.setItem('guru_apps_script_url', DEFAULT_URL);
+    return DEFAULT_URL;
+  }
+  return stored;
+};
+
 export default function QuizANBK() {
   // Candidate state
   const [student, setStudent] = useState<StudentInfo>(() => {
@@ -188,7 +203,7 @@ export default function QuizANBK() {
   // Google script sync tracking
   const [syncStatus, setSyncStatus] = useState<'idle' | 'syncing' | 'success' | 'failed'>('idle');
   const [syncMessage, setSyncMessage] = useState<string>('');
-  const [scriptUrl, setScriptUrl] = useState<string>(() => localStorage.getItem('guru_apps_script_url') || 'https://script.google.com/macros/s/AKfycbyd1ud6i0YXP8padu9_7BindQBo6iD_Sm6twZ71LTFqLb-hbdyI-zvHkERj2M_OsXg2/exec'); // Teachers paste App Script macro webapp URL here
+  const [scriptUrl, setScriptUrl] = useState<string>(() => getActualScriptUrl()); // Teachers paste App Script macro webapp URL here
 
   // Background timer ticking
   useEffect(() => {
@@ -404,7 +419,7 @@ export default function QuizANBK() {
       spreadsheetUrlId: "1mWJb0uh7btOGC07uITbEQh341wfG5euKXSQo4AC1e94"
     };
 
-    const currentScriptUrl = localStorage.getItem('guru_apps_script_url') || scriptUrl || 'https://script.google.com/macros/s/AKfycbyd1ud6i0YXP8padu9_7BindQBo6iD_Sm6twZ71LTFqLb-hbdyI-zvHkERj2M_OsXg2/exec';
+    const currentScriptUrl = getActualScriptUrl();
 
     // If teacher hasn't provided a Apps Script production Web App url yet, we simulate
     if (!currentScriptUrl) {
