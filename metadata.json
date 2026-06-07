@@ -1,0 +1,6 @@
+{
+  "name": "Statistik Kelas 8 Fase D",
+  "description": "Media pembelajaran matematika interaktif kelas 8 Fase D tentang Statistika (Ukuran Pemusatan dan Penyebaran Data) dengan kuis model ANBK, simulasi interaktif, materi, dan integrasi spreadsheet.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
