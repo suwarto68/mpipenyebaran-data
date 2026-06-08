@@ -106,12 +106,10 @@ function doPost(e) {
     }
     
     return ContentService.createTextOutput(JSON.stringify({ "status": "success", "type": type }))
-                         .setMimeType(ContentService.MimeType.JSON)
-                         .setHeader("Access-Control-Allow-Origin", "*");
+                         .setMimeType(ContentService.MimeType.JSON);
   } catch(error) {
     return ContentService.createTextOutput(JSON.stringify({ "status": "error", "message": error.toString() }))
-                         .setMimeType(ContentService.MimeType.JSON)
-                         .setHeader("Access-Control-Allow-Origin", "*");
+                         .setMimeType(ContentService.MimeType.JSON);
   } finally {
     lock.releaseLock();
   }
@@ -119,8 +117,7 @@ function doPost(e) {
 
 function doGet(e) {
   return ContentService.createTextOutput(JSON.stringify({ "status": "active", "message": "Portal Database Guru Suwarto Aktif!" }))
-                       .setMimeType(ContentService.MimeType.JSON)
-                       .setHeader("Access-Control-Allow-Origin", "*");
+                       .setMimeType(ContentService.MimeType.JSON);
 }
 
 function styleHeader(sheet) {

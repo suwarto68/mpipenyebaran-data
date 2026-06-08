@@ -154,9 +154,10 @@ const renderFormattedStimulus = (text: string) => {
   return <div className="space-y-1">{elements}</div>;
 };
 
-const DEFAULT_URL = 'https://script.google.com/macros/s/AKfycbyd1ud6i0YXP8padu9_7BindQBo6iD_Sm6twZ71LTFqLb-hbdyI-zvHkERj2M_OsXg2/exec';
+const DEFAULT_URL = 'https://script.google.com/macros/s/AKfycbzBDhLw0ZLfJXoPJatv46WI5HOF3FT3B0u6-1LfZyaznWQv7ldO3MZgcoU0v43ZxLnb/exec';
 const STALE_URLS = [
-  'https://script.google.com/macros/s/AKfycbzCFQk_8XeUDOrecw4v1Cguq4f97gxTkuCr3dWr0YiTMPTluV_gAGcY-7r-6CAe5qTo/exec'
+  'https://script.google.com/macros/s/AKfycbzCFQk_8XeUDOrecw4v1Cguq4f97gxTkuCr3dWr0YiTMPTluV_gAGcY-7r-6CAe5qTo/exec',
+  'https://script.google.com/macros/s/AKfycbyd1ud6i0YXP8padu9_7BindQBo6iD_Sm6twZ71LTFqLb-hbdyI-zvHkERj2M_OsXg2/exec'
 ];
 
 export const getActualScriptUrl = (): string => {
@@ -596,12 +597,10 @@ function doPost(e) {
     }
     
     return ContentService.createTextOutput(JSON.stringify({ "status": "success", "type": type }))
-                         .setMimeType(ContentService.MimeType.JSON)
-                         .setHeader("Access-Control-Allow-Origin", "*");
+                         .setMimeType(ContentService.MimeType.JSON);
   } catch(error) {
     return ContentService.createTextOutput(JSON.stringify({ "status": "error", "message": error.toString() }))
-                         .setMimeType(ContentService.MimeType.JSON)
-                         .setHeader("Access-Control-Allow-Origin", "*");
+                         .setMimeType(ContentService.MimeType.JSON);
   } finally {
     lock.releaseLock();
   }
@@ -609,8 +608,7 @@ function doPost(e) {
 
 function doGet(e) {
   return ContentService.createTextOutput(JSON.stringify({ "status": "active", "message": "Portal Database Guru Suwarto Aktif!" }))
-                       .setMimeType(ContentService.MimeType.JSON)
-                       .setHeader("Access-Control-Allow-Origin", "*");
+                       .setMimeType(ContentService.MimeType.JSON);
 }
 
 function styleHeader(sheet) {
